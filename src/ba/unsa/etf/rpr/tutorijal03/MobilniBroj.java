@@ -16,4 +16,10 @@ public class MobilniBroj extends TelefonskiBroj {
     public int hashCode() {
         return broj.hashCode();
     }
+
+    @Override
+    public int compareTo(Object obj) {
+        TelefonskiBroj broj = (TelefonskiBroj) obj;
+        return this.broj.compareTo(broj.ispisi());
+    }
 }

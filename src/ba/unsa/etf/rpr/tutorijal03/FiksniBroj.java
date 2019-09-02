@@ -15,10 +15,16 @@ public class FiksniBroj extends TelefonskiBroj {
             return value;
         }};
     private final String pozivni[] =  new String[]{"037", "031", "035", "032", "038", "030", "036", "039", "033", "034", "049"};
+    private Grad grad;
     private String broj;
 
     public FiksniBroj(Grad grad, String broj) {
         this.broj = pozivni[grad.getValue()] + "/" + broj;
+        this.grad = grad;
+    }
+
+    public Grad getGrad() {
+        return this.grad;
     }
     @Override
     public String ispisi() {
@@ -27,5 +33,10 @@ public class FiksniBroj extends TelefonskiBroj {
     @Override
     public int hashCode() {
         return broj.hashCode();
+    }
+    @Override
+    public int compareTo(Object obj) {
+        TelefonskiBroj broj = (TelefonskiBroj)obj;
+        return this.broj.compareTo(broj.ispisi());
     }
 }
